@@ -1,10 +1,15 @@
 "use client";
 
 import Spline from "@splinetool/react-spline";
+import { useSearchParams } from "next/navigation";
 
 export default function Home() {
-  const length: number = 4;
-  const height: number = 5;
+  const searchParams = useSearchParams();
+  
+  // Ottieni i parametri URL con valori predefiniti se non specificati
+  const length: number = Number(searchParams.get("length")) || 4;
+  const height: number = Number(searchParams.get("height")) || 5;
+
   let splineObject: any = null;
 
   function onLoad(spline: any) {
